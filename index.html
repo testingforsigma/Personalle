@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio Numérique — Rayen Zarrouk</title>
+<meta content="Portfolio numérique de Rayen Zarrouk (ISET Nabeul, TI14) — productions des modules Digital Skills, Développement et Systèmes." name="description"/>
+<meta content="Rayen Zarrouk" name="author"/>
+<meta content="#edeff3" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#0e1014" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="Portfolio Numérique — Rayen Zarrouk" property="og:title"/>
+<meta content="Portfolio numérique de Rayen Zarrouk (ISET Nabeul, TI14) — productions des modules Digital Skills, Développement et Systèmes." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<link href="admin-editor.css" rel="stylesheet"/>
+<script>
+    /* Applique le thème avant le premier affichage (évite le flash blanc) */
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add("js");
+      try { t = localStorage.getItem("portfolio-theme"); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      d.setAttribute("data-theme", t);
+    })();
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+<div class="nav-wrap">
+<a aria-label="Rayen Zarrouk — accueil" class="brand" href="index.html">
+<img alt="" class="brand-mark" height="38" src="avatar.jpg" width="38"/>
+<span class="brand-name">Rayen Zarrouk</span>
+</a>
+<nav aria-label="Navigation principale" class="main-nav" id="main-nav">
+<ul>
+<li><a aria-current="page" class="nav-link" href="index.html">Accueil</a></li>
+<li class="has-dd">
+<button aria-controls="dd-ds" aria-expanded="false" class="nav-link dd-btn" type="button">Digital Skills <svg aria-hidden="true" class="icon chev" focusable="false" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></button>
+<ul class="dd-panel" id="dd-ds">
+<li><a class="g-ds" href="cybersecurite.html"><span class="tile sm"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span><span>Cybersécurité<small>Menaces, bonnes pratiques, checklist</small></span></a></li>
+<li><a class="g-ds" href="prompt-engineering.html"><span class="tile sm"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M8 9h8M8 13h5"></path></svg></span><span>Prompt Engineering<small>Cas pratiques et prompts réutilisables</small></span></a></li>
+<li><a class="g-ds" href="creation-contenu.html"><span class="tile sm"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m10 9 5 3-5 3z"></path></svg></span><span>Création de contenu<small>Vidéo, podcast, carte mentale</small></span></a></li>
+</ul>
+</li>
+<li class="has-dd">
+<button aria-controls="dd-dev" aria-expanded="false" class="nav-link dd-btn" type="button">Développement <svg aria-hidden="true" class="icon chev" focusable="false" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></button>
+<ul class="dd-panel" id="dd-dev">
+<li><a class="g-dev" href="python.html"><span class="tile sm"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></svg></span><span>Python<small>Calculatrice, devinettes, notes</small></span></a></li>
+<li><a class="g-dev" href="langage-c.html"><span class="tile sm"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="14" rx="2" width="14" x="5" y="5"></rect><rect height="6" width="6" x="9" y="9"></rect><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"></path></svg></span><span>Langage C<small>Variables, boucles, pointeurs</small></span></a></li>
+<li><a class="g-dev" href="algorithmique.html"><span class="tile sm"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="6" rx="1" width="6" x="3" y="3"></rect><rect height="6" rx="1" width="6" x="15" y="15"></rect><path d="M6 9v3a3 3 0 0 0 3 3h6"></path></svg></span><span>Algorithmique<small>Organigrammes et pseudo-code</small></span></a></li>
+</ul>
+</li>
+<li class="has-dd">
+<button aria-controls="dd-sys" aria-expanded="false" class="nav-link dd-btn" type="button">Systèmes <svg aria-hidden="true" class="icon chev" focusable="false" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></button>
+<ul class="dd-panel" id="dd-sys">
+<li><a class="g-sys" href="systemes-exploitation.html"><span class="tile sm"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8M12 17v4"></path></svg></span><span>Systèmes d'exploitation<small>Windows, Linux, macOS, terminal</small></span></a></li>
+<li><a class="g-sys" href="architecture-electronique.html"><span class="tile sm"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"></path><path d="m2 12 10 5 10-5"></path><path d="m2 17 10 5 10-5"></path></svg></span><span>Architecture &amp; électronique<small>Binaire, hexadécimal, portes logiques</small></span></a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<div class="nav-controls">
+<button aria-label="Passer en mode sombre" aria-pressed="false" class="icon-btn theme-toggle" id="theme-toggle" type="button">
+<svg aria-hidden="true" class="icon i-moon" focusable="false" viewbox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="icon i-sun" focusable="false" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+</button>
+<button aria-controls="main-nav" aria-expanded="false" aria-label="Ouvrir le menu" class="icon-btn menu-toggle" id="menu-toggle" type="button">
+<svg aria-hidden="true" class="icon i-open" focusable="false" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg><svg aria-hidden="true" class="icon i-close" focusable="false" viewbox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+</button>
+</div>
+</div>
+</header>
+<main id="contenu">
+<section class="hero" id="top">
+<div class="container hero-grid">
+<div>
+<p class="eyebrow">Portfolio numérique 2026</p>
+<h1>Rayen Zarrouk</h1>
+<p class="tagline">Technologies de l'Informatique (TI14) — ISET Nabeul — 1ère année</p>
+<p class="lede">
+            Bienvenue sur mon portfolio numérique ! Ce site rassemble mes réalisations
+            pour chaque unité d'enseignement du semestre : Digital Skills, Développement,
+            Systèmes d'exploitation &amp; fondements, et le site lui-même, construit en HTML/CSS/JS
+            et hébergé sur GitHub Pages.
+          </p>
+<div class="cta-row">
+<a class="btn btn-primary" href="#modules">Découvrir mes modules <svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
+<a class="btn btn-ghost" href="cybersecurite.html">Commencer par le module 1</a>
+</div>
+<ul class="stats">
+<li><strong>7/8</strong><span>modules terminés</span></li>
+<li><strong>3</strong><span>domaines</span></li>
+<li><strong>HTML · CSS · JS</strong><span>sans framework</span></li>
+</ul>
+</div>
+<div class="avatar-wrap">
+<div class="avatar"><div class="avatar-inner"><img alt="Avatar 3D de Rayen Zarrouk : cheveux noirs, lunettes, barbe et veste orange" fetchpriority="high" height="554" src="avatar.jpg" width="554"/></div></div>
+<div class="avatar-badge"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg> ISET Nabeul · TI14</div>
+</div>
+</div>
+</section>
+<section class="modules container" id="modules">
+<div class="section-head">
+<p class="kicker">Réalisations</p>
+<h2>Mes modules</h2>
+<p>Chaque module regroupe mes productions, mes explications et une fiche de transparence sur l'usage de l'IA.</p>
+</div>
+<div class="group g-ds">
+<div class="group-head">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+<div><h3>Digital Skills</h3><p>Compétences numériques transversales</p></div>
+<span class="count">3 modules</span>
+</div>
+<div class="card-grid">
+<a class="card g-ds" href="cybersecurite.html">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+<h3>Cybersécurité</h3>
+<p>Menaces numériques, bonnes pratiques et checklist « Suis-je bien protégé ? ».</p>
+<div class="card-foot"><span class="status done">Terminé</span><svg aria-hidden="true" class="icon arrow" focusable="false" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</a>
+<a class="card g-ds" href="prompt-engineering.html">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M8 9h8M8 13h5"></path></svg></span>
+<h3>Prompt Engineering</h3>
+<p>Cas pratiques avant/après et bibliothèque de prompts réutilisables.</p>
+<div class="card-foot"><span class="status">Terminé</span><svg aria-hidden="true" class="icon arrow" focusable="false" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</a>
+<a class="card g-ds" href="creation-contenu.html">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m10 9 5 3-5 3z"></path></svg></span>
+<h3>Création de contenu</h3>
+<p>Avatar parlant, montage vidéo, podcast, carte mentale et présentation interactive.</p>
+<div class="card-foot"><span class="status">À compléter</span><svg aria-hidden="true" class="icon arrow" focusable="false" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</a>
+</div>
+</div>
+<div class="group g-dev">
+<div class="group-head">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></svg></span>
+<div><h3>Développement</h3><p>Programmation et pensée algorithmique</p></div>
+<span class="count">3 modules</span>
+</div>
+<div class="card-grid">
+<a class="card g-dev" href="python.html">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></svg></span>
+<h3>Python</h3>
+<p>Trois mini-projets : calculatrice, jeu de devinettes, gestionnaire de notes.</p>
+<div class="card-foot"><span class="status">Terminé</span><svg aria-hidden="true" class="icon arrow" focusable="false" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</a>
+<a class="card g-dev" href="langage-c.html">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="14" rx="2" width="14" x="5" y="5"></rect><rect height="6" width="6" x="9" y="9"></rect><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"></path></svg></span>
+<h3>Langage C</h3>
+<p>Programmes illustrant variables, conditions, boucles, fonctions et pointeurs.</p>
+<div class="card-foot"><span class="status">Terminé</span><svg aria-hidden="true" class="icon arrow" focusable="false" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</a>
+<a class="card g-dev" href="algorithmique.html">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="6" rx="1" width="6" x="3" y="3"></rect><rect height="6" rx="1" width="6" x="15" y="15"></rect><path d="M6 9v3a3 3 0 0 0 3 3h6"></path></svg></span>
+<h3>Algorithmique</h3>
+<p>Organigrammes, pseudo-code et traduction en Python/C de trois algorithmes.</p>
+<div class="card-foot"><span class="status done">Terminé</span><svg aria-hidden="true" class="icon arrow" focusable="false" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</a>
+</div>
+</div>
+<div class="group g-sys">
+<div class="group-head">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8M12 17v4"></path></svg></span>
+<div><h3>Systèmes</h3><p>Fondements matériels et logiciels</p></div>
+<span class="count">2 modules</span>
+</div>
+<div class="card-grid">
+<a class="card g-sys" href="systemes-exploitation.html">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8M12 17v4"></path></svg></span>
+<h3>Systèmes d'exploitation</h3>
+<p>Rôle d'un OS, comparatif Windows/Linux/macOS, mini-tutoriel terminal.</p>
+<div class="card-foot"><span class="status">Terminé</span><svg aria-hidden="true" class="icon arrow" focusable="false" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</a>
+<a class="card g-sys" href="architecture-electronique.html">
+<span class="tile"><svg aria-hidden="true" class="icon" focusable="false" viewbox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"></path><path d="m2 12 10 5 10-5"></path><path d="m2 17 10 5 10-5"></path></svg></span>
+<h3>Architecture &amp; électronique</h3>
+<p>Architecture d'un ordinateur, numération binaire/hexadécimale, portes logiques.</p>
+<div class="card-foot"><span class="status done">Terminé</span><svg aria-hidden="true" class="icon arrow" focusable="false" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div class="footer-about">
+<a class="brand" href="index.html"><img alt="" class="brand-mark" height="38" src="avatar.jpg" width="38"/><span>Rayen Zarrouk</span></a>
+<p>Portfolio numérique — étudiant en Technologies de l'Informatique (TI14) à l'ISET Nabeul.</p>
+</div>
+<div>
+<h2>Digital Skills</h2>
+<ul>
+<li><a href="cybersecurite.html">Cybersécurité</a></li>
+<li><a href="prompt-engineering.html">Prompt Engineering</a></li>
+<li><a href="creation-contenu.html">Création de contenu</a></li>
+</ul>
+</div>
+<div>
+<h2>Développement</h2>
+<ul>
+<li><a href="python.html">Python</a></li>
+<li><a href="langage-c.html">Langage C</a></li>
+<li><a href="algorithmique.html">Algorithmique</a></li>
+</ul>
+</div>
+<div>
+<h2>Systèmes</h2>
+<ul>
+<li><a href="systemes-exploitation.html">Systèmes d'exploitation</a></li>
+<li><a href="architecture-electronique.html">Architecture &amp; électronique</a></li>
+</ul>
+</div>
+</div>
+<div class="container footer-bottom">
+<p>© 2026 Rayen Zarrouk — Portfolio Numérique — Hébergé sur GitHub Pages</p>
+<a href="#top">Haut de page ↑</a>
+</div>
+</footer>
+<!-- Assistant IA administrateur : appel direct au fournisseur depuis le navigateur. -->
+<div id="ai-admin-root" class="ai-admin-root">
+  <button id="ai-admin-toggle" class="ai-admin-toggle" type="button" aria-expanded="false" aria-controls="ai-admin-panel">
+    <span class="ai-admin-spark" aria-hidden="true">✦</span><span>Assistant IA</span>
+  </button>
+  <section id="ai-admin-panel" class="ai-admin-panel" aria-label="Assistant administrateur du portfolio" hidden>
+    <header class="ai-admin-header">
+      <div><p class="ai-admin-eyebrow">ESPACE ADMINISTRATEUR</p><h2>Assistant du portfolio</h2><p class="ai-admin-subtitle">Décris une modification en langage naturel.</p></div>
+      <button id="ai-admin-close" class="ai-admin-close" type="button" aria-label="Fermer">×</button>
+    </header>
+    <div class="ai-admin-security"><strong>Mode direct</strong><span>Écris ta demande et envoie-la directement au service IA. Les changements sont prévisualisés avant application.</span></div>
+    <label class="ai-admin-label" for="ai-admin-message">Que veux-tu modifier ?</label>
+    <textarea id="ai-admin-message" class="ai-admin-input ai-admin-message" rows="3" maxlength="2000" placeholder="Ex. : rends le bouton principal rouge et augmente légèrement le titre..."></textarea>
+    <div class="ai-admin-actions">
+      <button id="ai-admin-send" class="ai-admin-send" type="button">Envoyer à l'IA <span aria-hidden="true">↗</span></button>
+      <button id="ai-admin-undo" class="ai-admin-undo" type="button" disabled>Annuler la dernière modification</button>
+    </div>
+    <p id="ai-admin-status" class="ai-admin-status" role="status" aria-live="polite">Prêt. Décris ce que tu veux changer.</p>
+    <div id="ai-admin-result" class="ai-admin-result" hidden>
+      <p id="ai-admin-reply" class="ai-admin-reply"></p>
+      <div id="ai-admin-proposals" class="ai-admin-proposals"></div>
+      <button id="ai-admin-apply" class="ai-admin-apply" type="button" hidden>Appliquer les changements</button>
+    </div>
+    <p class="ai-admin-footnote">Les changements appliqués sont temporaires dans cette page. Pour les conserver, exporte ou modifie les fichiers du site puis republie-les sur GitHub.</p>
+  </section>
+</div>
+<script src="admin-config.js"></script>
+<script defer="" src="script.js"></script>
+<script defer="" src="admin-editor.js"></script>
+</body>
+</html>

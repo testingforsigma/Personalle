@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Engineering — Rayen Zarrouk</title>
+  <meta name="description" content="Cas pratiques avant/après et bibliothèque de prompts réutilisables." />
+  <meta name="author" content="Rayen Zarrouk" />
+  <meta name="theme-color" content="#edeff3" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
+  <meta property="og:title" content="Prompt Engineering — Rayen Zarrouk" />
+  <meta property="og:description" content="Cas pratiques avant/après et bibliothèque de prompts réutilisables." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&family=Figtree:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin-editor.css" />
+  <script>
+    /* Applique le thème avant le premier affichage (évite le flash blanc) */
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add("js");
+      try { t = localStorage.getItem("portfolio-theme"); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      d.setAttribute("data-theme", t);
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="brand" aria-label="Rayen Zarrouk — accueil">
+        <img class="brand-mark" src="avatar.jpg" alt="" width="38" height="38" />
+        <span class="brand-name">Rayen Zarrouk</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="has-dd">
+            <button class="nav-link dd-btn active" type="button" aria-expanded="false" aria-controls="dd-ds">Digital Skills <svg class="icon chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="dd-panel" id="dd-ds">
+              <li><a class="g-ds" href="cybersecurite.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Cybersécurité<small>Menaces, bonnes pratiques, checklist</small></span></a></li>
+              <li><a class="g-ds" href="prompt-engineering.html" aria-current="page"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><span>Prompt Engineering<small>Cas pratiques et prompts réutilisables</small></span></a></li>
+              <li><a class="g-ds" href="creation-contenu.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m10 9 5 3-5 3z"/></svg></span><span>Création de contenu<small>Vidéo, podcast, carte mentale</small></span></a></li>
+            </ul>
+          </li>
+          <li class="has-dd">
+            <button class="nav-link dd-btn" type="button" aria-expanded="false" aria-controls="dd-dev">Développement <svg class="icon chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="dd-panel" id="dd-dev">
+              <li><a class="g-dev" href="python.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></span><span>Python<small>Calculatrice, devinettes, notes</small></span></a></li>
+              <li><a class="g-dev" href="langage-c.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><span>Langage C<small>Variables, boucles, pointeurs</small></span></a></li>
+              <li><a class="g-dev" href="algorithmique.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/></svg></span><span>Algorithmique<small>Organigrammes et pseudo-code</small></span></a></li>
+            </ul>
+          </li>
+          <li class="has-dd">
+            <button class="nav-link dd-btn" type="button" aria-expanded="false" aria-controls="dd-sys">Systèmes <svg class="icon chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="dd-panel" id="dd-sys">
+              <li><a class="g-sys" href="systemes-exploitation.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span>Systèmes d'exploitation<small>Windows, Linux, macOS, terminal</small></span></a></li>
+              <li><a class="g-sys" href="architecture-electronique.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg></span><span>Architecture &amp; électronique<small>Binaire, hexadécimal, portes logiques</small></span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Passer en mode sombre" aria-pressed="false">
+          <svg class="icon i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="icon i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button id="menu-toggle" class="icon-btn menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+          <svg class="icon i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="icon i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header g-ds" id="top">
+    <div class="inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="index.html">Accueil</a></li>
+          <li>Digital Skills</li>
+          <li aria-current="page">Prompt Engineering</li>
+        </ol>
+      </nav>
+      <span class="tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+      <p class="kicker">Digital Skills · Module 2/8</p>
+      <h1>Prompt Engineering</h1>
+      <p class="page-lede">Cas pratiques avant/après et bibliothèque de prompts réutilisables.</p>
+    </div>
+  </div>
+
+  <main id="contenu" class="page g-ds">\n<section class="block"><h2>Les éléments d'un bon prompt</h2>
+<p>Un bon prompt précise le rôle, le contexte, la tâche, le format attendu, les contraintes et, si nécessaire, un exemple.</p>
+<dl class="defs"><dt>Rôle</dt><dd>Le point de vue demandé à l’IA, par exemple professeur de programmation.</dd>
+<dt>Contexte</dt><dd>Le niveau, l’objectif et les informations utiles.</dd><dt>Tâche</dt><dd>Une action claire : expliquer, comparer, corriger ou résumer.</dd>
+<dt>Format de sortie</dt><dd>Un tableau, une liste, une longueur ou une langue précise.</dd><dt>Contraintes</dt><dd>Les limites à respecter : niveau débutant, pas de jargon, ne pas inventer.</dd>
+<dt>Exemples</dt><dd>Un exemple de résultat attendu pour guider la réponse.</dd></dl></section>
+<section class="block"><h2>Cas pratique 1 — Améliorer la demande de réalisation du portfolio</h2>
+<p><strong>Contexte réel :</strong> la consigne du portfolio a d’abord été transmise sous forme d’une demande générale de création du site, puis précisée avec la liste détaillée des modules et des livrables.</p>
+<div class="table-wrap"><table><tr><th>Élément</th><th>Exemple</th></tr>
+<tr><td>Prompt initial (faible)</td><td>« Fais-moi le site du portfolio. »</td></tr>
+<tr><td>Résultat obtenu</td><td>Une base de site peut être créée, mais la demande ne précise ni les pages, ni les contenus obligatoires, ni les éléments à ne pas modifier. Le résultat risque donc d’être incomplet.</td></tr>
+<tr><td>Prompt amélioré</td><td>« À partir du ZIP du portfolio, complète les pages Cybersécurité, Prompt Engineering, Python, C, Algorithmique, Systèmes d’exploitation et Architecture &amp; électronique. Respecte les blocs demandés, conserve la page Création de contenu intacte, ajoute les sources, les codes et les schémas dans medias/, relie les images avec img, et actualise les statuts uniquement lorsque les pages sont terminées. N’invente pas mes captures personnelles. »</td></tr>
+<tr><td>Résultat obtenu</td><td>La demande précise les pages concernées, les livrables attendus, les contraintes de conservation et la règle de transparence. Le site peut être modifié de manière ciblée et vérifiable.</td></tr>
+<tr><td>Analyse</td><td>Le prompt amélioré donne le contexte (ZIP existant), la tâche (compléter les pages), le format (HTML, images, codes), les contraintes (ne pas toucher Création de contenu) et un critère de réussite (statuts cohérents). Il réduit les interprétations.</td></tr></table></div>
+</section>
+<section class="block"><h2>Cas pratique 2 — Demander une explication de pointeur en C</h2>
+<p><strong>Contexte :</strong> comprendre la différence entre une variable, son adresse et la valeur stockée à cette adresse.</p>
+<div class="table-wrap"><table><tr><th>Élément</th><th>Exemple</th></tr>
+<tr><td>Prompt initial (faible)</td><td>« Explique les pointeurs en C. »</td></tr>
+<tr><td>Résultat obtenu</td><td>Une explication générale qui peut contenir trop de vocabulaire technique et ne pas montrer clairement la différence entre &amp; et *.</td></tr>
+<tr><td>Prompt amélioré</td><td>« Tu es un enseignant de programmation C pour un étudiant débutant. Explique les pointeurs très simplement, une notion à la fois. Utilise un exemple avec int x = 10 et int *p = &amp;x. Montre ce que donnent x, &amp;x, p et *p. Explique chaque ligne, puis pose une seule question de vérification. N’utilise pas de jargon sans le définir. »</td></tr>
+<tr><td>Résultat obtenu</td><td>L’explication devient progressive : x est la valeur, &amp;x est son adresse, p contient cette adresse et *p permet d’accéder à la valeur pointée.</td></tr>
+<tr><td>Analyse</td><td>Le rôle, le niveau, le format, l’exemple imposé et la limite « une question à la fin » rendent la réponse plus adaptée à l’apprentissage.</td></tr></table></div>
+</section>
+<section class="block"><h2>Cas pratique 3 — Comparaison de deux outils pour expliquer un pointeur C</h2>
+<p><strong>Besoin identique :</strong> obtenir une explication accessible du code <code>int x = 10; int *p = &amp;x;</code>, avec un exemple et une question de vérification.</p>
+<p><strong>Prompt commun à copier dans les deux outils :</strong></p>
+<blockquote>Tu es un professeur de C pour débutant. Explique le code <code>int x = 10; int *p = &amp;x;</code> en 120 mots maximum. Distingue la valeur, l’adresse, le pointeur et le déréférencement. Ajoute un mini-tableau indiquant ce que représentent x, &amp;x, p et *p, puis termine par une question simple. Si tu n’es pas sûr d’une adresse mémoire concrète, n’en invente pas.</blockquote>
+<div class="table-wrap"><table><tr><th>Critère</th><th>ChatGPT</th><th>Claude</th></tr>
+<tr><td>Fonction annoncée</td><td>Explication, rédaction, raisonnement et aide au code ; peut aussi travailler avec des fichiers et images selon les fonctions disponibles.</td><td>Explication, génération de texte et de code, analyse et traitement d’images selon les fonctions disponibles.</td></tr>
+<tr><td>Points à comparer pendant le test</td><td>Exactitude de la distinction entre adresse et valeur ; respect de 120 mots ; clarté du tableau.</td><td>Exactitude de la distinction entre adresse et valeur ; respect de 120 mots ; clarté du tableau.</td></tr>
+<tr><td>Limite à vérifier</td><td>Vérifier les exemples C et ne pas prendre une adresse mémoire fictive pour une adresse réelle.</td><td>Vérifier les exemples C et ne pas prendre une adresse mémoire fictive pour une adresse réelle.</td></tr>
+<tr><td>Conclusion</td><td colspan="2">La comparaison doit se faire avec le même prompt et la même version de code. Les documentations officielles décrivent les capacités générales, mais ne permettent pas de déclarer qu’un outil a donné une meilleure réponse sans exécuter le test. Ajouter ici les deux réponses/captures après le test réel.</td></tr></table></div>
+<h3>Résultat du test — ChatGPT</h3>
+<p><strong>Réponse obtenue ici avec le prompt commun :</strong></p>
+<div class="example"><p><strong>Explication :</strong> <code>x</code> est une variable qui contient la valeur <code>10</code>. <code>&amp;x</code> désigne l’adresse mémoire de <code>x</code>. Le pointeur <code>p</code> reçoit cette adresse. Enfin, <code>*p</code> signifie « la valeur située à l’adresse contenue dans p » : ici, <code>10</code>.</p>
+<div class="table-wrap"><table><tr><th>Expression</th><th>Signification</th></tr><tr><td><code>x</code></td><td>La valeur stockée : 10.</td></tr><tr><td><code>&amp;x</code></td><td>L’adresse mémoire de x.</td></tr><tr><td><code>p</code></td><td>Le pointeur qui contient l’adresse de x.</td></tr><tr><td><code>*p</code></td><td>La valeur pointée : 10.</td></tr></table></div>
+<p><strong>Question :</strong> si on écrit <code>*p = 20;</code>, quelle sera la valeur de <code>x</code> ?</p></div>
+<h3>Exemple illustratif de réponse possible avec Claude</h3>
+<div class="example">
+<p><strong>Attention :</strong> le texte ci-dessous est un exemple pédagogique rédigé pour illustrer le type de réponse attendu. Ce n’est pas une sortie réellement obtenue depuis une session Claude et il ne doit pas être présenté comme une capture ou un test effectué.</p>
+<p>La variable <code>x</code> contient le nombre <code>10</code>. L’expression <code>&amp;x</code> représente l’adresse mémoire de cette variable. Le pointeur <code>p</code> stocke cette adresse. L’expression <code>*p</code> permet d’accéder à la valeur située à cette adresse, donc à <code>10</code>.</p>
+<div class="table-wrap"><table><tr><th>Expression</th><th>Signification</th></tr><tr><td><code>x</code></td><td>Valeur : 10</td></tr><tr><td><code>&amp;x</code></td><td>Adresse de x</td></tr><tr><td><code>p</code></td><td>Pointeur contenant l’adresse de x</td></tr><tr><td><code>*p</code></td><td>Valeur située à cette adresse : 10</td></tr></table></div>
+<p><strong>Question :</strong> si on modifie <code>*p</code> en lui affectant <code>20</code>, quelle valeur contiendra <code>x</code> ?</p>
+</div>
+<h3>Comparaison des outils sur le même besoin</h3>
+<p>La comparaison ci-dessous porte sur les fonctions documentées et sur les réponses pédagogiques présentées comme exemples. Elle ne prétend pas mesurer les performances de deux sessions réelles exécutées au même moment.</p>
+<div class="table-wrap"><table><tr><th>Critère</th><th>ChatGPT</th><th>Claude</th></tr>
+<tr><td>Explication de code</td><td>Peut expliquer du code et aider à le corriger.</td><td>Peut générer et expliquer du code.</td></tr>
+<tr><td>Analyse d'images et fichiers</td><td>Fonctions disponibles selon le modèle et l’offre.</td><td>La documentation présente l’analyse d’images et le traitement de fichiers selon les fonctions disponibles.</td></tr>
+<tr><td>Production de contenus réutilisables</td><td>Peut produire du texte, du code et des documents selon les outils disponibles.</td><td>Les Artifacts permettent de créer des documents, diagrammes, sites et petits outils interactifs.</td></tr>
+<tr><td>Pour ce besoin précis</td><td>Exemple clair avec tableau et question de vérification.</td><td>Exemple illustratif clair avec tableau et question de vérification.</td></tr>
+<tr><td>Limite</td><td>Vérifier le code et les explications avec un compilateur ou un cours.</td><td>Vérifier le code et les explications avec un compilateur ou un cours.</td></tr>
+</table></div>
+<p><strong>Conclusion :</strong> les deux assistants peuvent aider à expliquer les pointeurs en C. Pour choisir le meilleur résultat dans un vrai devoir, il faut envoyer le même prompt aux deux outils, puis comparer l’exactitude, la clarté et le respect de la consigne. Les exemples affichés ici servent à présenter la méthode, pas à prouver un test comparatif réel.</p>
+<p><strong>Sources documentaires :</strong> <a href="https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview" target="_blank" rel="noopener">OpenAI — capacités de ChatGPT</a> ; <a href="https://platform.claude.com/docs/en/intro" target="_blank" rel="noopener">Anthropic — capacités de Claude</a> ; <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them" target="_blank" rel="noopener">Anthropic — Artifacts</a> ; <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">Anthropic — bonnes pratiques de prompting</a>.</p>
+</section>
+<section class="block"><h2>Bibliothèque de prompts</h2><p>Les modèles de prompts de cette page peuvent être réutilisés en remplaçant les éléments entre crochets.</p></section>
+<section class="block"><h2>Bibliothèque de prompts</h2><ol>
+<li>« Explique-moi [notion] comme à un débutant, avec une analogie et un exemple concret. Termine par une question. »</li>
+<li>« Tu es professeur de [matière]. Voici mon code : [code]. Ne donne pas la solution ; indique l’erreur et donne-moi un indice. »</li>
+<li>« Résume ce cours en une page : définitions, cinq idées à retenir et un exemple par idée. N’ajoute rien qui ne figure pas dans le texte. »</li>
+<li>« Pose-moi cinq QCM sur [chapitre], une question à la fois. Attends ma réponse avant de corriger. »</li>
+<li>« Compare [outil A] et [outil B] pour [besoin] selon la facilité, les limites, les fonctionnalités et les sources. »</li>
+</ol></section>\n
+    <section class="block">
+      <h2>Cas pratique 1 — Tableau de synthèse en cinq étapes</h2>
+      <p>Objectif : transformer une demande vague en consigne exploitable pour compléter un portfolio déjà existant.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Étape</th><th>Prompt / élément</th><th>Résultat attendu</th><th>Évaluation</th><th>Amélioration possible</th></tr></thead>
+        <tbody>
+          <tr><td>Objectif</td><td>Compléter un site étudiant sans perdre son identité visuelle.</td><td>Des pages cohérentes et présentables.</td><td>Objectif concret, mais plusieurs livrables.</td><td>Définir les pages prioritaires et les critères d’acceptation.</td></tr>
+          <tr><td>Prompt initial</td><td>« Fais-moi le site du portfolio. »</td><td>Une base de site générique.</td><td>Contexte, structure et contraintes absents.</td><td>Fournir le ZIP et décrire l’existant.</td></tr>
+          <tr><td>Prompt amélioré</td><td>« À partir du ZIP, complète les modules indiqués, conserve la navigation et les couleurs, corrige les textes, ajoute des exemples exécutables et des sources vérifiables. Ne fabrique aucune preuve personnelle. »</td><td>Des modifications ciblées, testables et documentées.</td><td>Rôle, contexte, tâche et contraintes sont explicités.</td><td>Ajouter une liste de tests : liens, mobile, scripts et compilation.</td></tr>
+          <tr><td>Résultat / évaluation</td><td>La demande devient une liste de livrables vérifiables.</td><td>Le travail peut être réparti page par page.</td><td>La précision réduit les oublis, mais ne garantit pas la qualité.</td><td>Relire le contenu et exécuter les codes.</td></tr>
+          <tr><td>Amélioration</td><td>Demander une vérification finale et un rapport des éléments non vérifiés.</td><td>Une livraison plus fiable.</td><td>Les limites sont rendues visibles.</td><td>Ne déclarer « Terminé » qu’après les tests.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+    <section class="block">
+      <h2>Cas pratique 2 — Comprendre les pointeurs en C</h2>
+      <p>Objectif : obtenir une explication progressive de la différence entre une variable, son adresse et la valeur pointée.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Étape</th><th>Prompt / élément</th><th>Résultat attendu</th><th>Évaluation</th><th>Amélioration possible</th></tr></thead>
+        <tbody>
+          <tr><td>Objectif</td><td>Comprendre <code>int x = 10; int *p = &amp;x;</code>.</td><td>Distinguer valeur, adresse et déréférencement.</td><td>Notion ciblée et observable.</td><td>Demander une trace pas à pas.</td></tr>
+          <tr><td>Prompt initial</td><td>« Explique les pointeurs en C. »</td><td>Définition générale.</td><td>Trop large pour un débutant.</td><td>Imposer un exemple court.</td></tr>
+          <tr><td>Prompt amélioré</td><td>« Explique comme à un débutant le code <code>int x=10; int *p=&amp;x;</code>. Présente x, &amp;x, p et *p dans un tableau, puis pose une question. N’invente pas d’adresse mémoire. »</td><td>Une explication et un tableau comparatif.</td><td>Le format et les limites sont explicites.</td><td>Demander aussi une modification de la valeur par <code>*p</code>.</td></tr>
+          <tr><td>Résultat / évaluation</td><td><code>x</code> vaut 10 ; <code>&amp;x</code> est son adresse ; <code>p</code> stocke cette adresse ; <code>*p</code> lit 10.</td><td>Compréhension des quatre expressions.</td><td>Exact si l’explication distingue bien adresse et contenu.</td><td>Vérifier avec un compilateur et un schéma mémoire.</td></tr>
+          <tr><td>Amélioration</td><td>« Que devient x après <code>*p = 20;</code> ? Explique pourquoi. »</td><td>La réponse attendue est 20.</td><td>La question vérifie la compréhension active.</td><td>Faire varier les valeurs et refaire le test sans regarder la réponse.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+
+    <section class="ia-disclosure"><h2>🧾 Fiche de transparence IA</h2><dl>
+<dt>Outils utilisés :</dt><dd>ChatGPT (aide à la rédaction et aux compléments) ; Claude est également étudié dans le cas comparatif. La réponse Claude affichée est explicitement illustrative, pas une sortie de session réelle.</dd>
+<dt>Rôle de l'IA :</dt><dd>L’IA a aidé à structurer les exemples de prompts, les tableaux comparatifs et l’analyse des critères. Le comparatif présente les fonctionnalités documentées ; les réponses présentées ici sont des exemples pédagogiques ; un essai réel côte à côte reste nécessaire pour mesurer les performances.</dd>
+<dt>Validation et travail personnel :</dt><dd>L’étudiant doit relire et comprendre chaque élément, vérifier les informations avec les sources citées et exécuter lui-même les programmes ou manipulations avant la remise. Les exemples et sorties signalés comme démonstrations ne sont pas des preuves personnelles. Les choix finaux, la validation et la présentation doivent être assumés par l’étudiant.</dd>
+<dt>Sources vérifiées :</dt><dd><a href="https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview" target="_blank" rel="noopener">OpenAI — capacités de ChatGPT</a> ; <a href="https://platform.claude.com/docs/en/intro" target="_blank" rel="noopener">Anthropic — présentation de Claude</a>.</dd></dl></section>
+</main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="brand"><img class="brand-mark" src="avatar.jpg" alt="" width="38" height="38" /><span>Rayen Zarrouk</span></a>
+        <p>Portfolio numérique — étudiant en Technologies de l'Informatique (TI14) à l'ISET Nabeul.</p>
+      </div>
+      <div>
+        <h2>Digital Skills</h2>
+        <ul>
+          <li><a href="cybersecurite.html">Cybersécurité</a></li>
+          <li><a href="prompt-engineering.html">Prompt Engineering</a></li>
+          <li><a href="creation-contenu.html">Création de contenu</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Développement</h2>
+        <ul>
+          <li><a href="python.html">Python</a></li>
+          <li><a href="langage-c.html">Langage C</a></li>
+          <li><a href="algorithmique.html">Algorithmique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Systèmes</h2>
+        <ul>
+          <li><a href="systemes-exploitation.html">Systèmes d'exploitation</a></li>
+          <li><a href="architecture-electronique.html">Architecture &amp; électronique</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Rayen Zarrouk — Portfolio Numérique — Hébergé sur GitHub Pages</p>
+      <a href="#top">Haut de page ↑</a>
+    </div>
+  </footer>
+
+  <!-- Assistant IA administrateur : appel direct au fournisseur depuis le navigateur. -->
+<div id="ai-admin-root" class="ai-admin-root">
+  <button id="ai-admin-toggle" class="ai-admin-toggle" type="button" aria-expanded="false" aria-controls="ai-admin-panel">
+    <span class="ai-admin-spark" aria-hidden="true">✦</span><span>Assistant IA</span>
+  </button>
+  <section id="ai-admin-panel" class="ai-admin-panel" aria-label="Assistant administrateur du portfolio" hidden>
+    <header class="ai-admin-header">
+      <div><p class="ai-admin-eyebrow">ESPACE ADMINISTRATEUR</p><h2>Assistant du portfolio</h2><p class="ai-admin-subtitle">Décris une modification en langage naturel.</p></div>
+      <button id="ai-admin-close" class="ai-admin-close" type="button" aria-label="Fermer">×</button>
+    </header>
+    <div class="ai-admin-security"><strong>Mode direct</strong><span>Écris ta demande et envoie-la directement au service IA. Les changements sont prévisualisés avant application.</span></div>
+    <label class="ai-admin-label" for="ai-admin-message">Que veux-tu modifier ?</label>
+    <textarea id="ai-admin-message" class="ai-admin-input ai-admin-message" rows="3" maxlength="2000" placeholder="Ex. : rends le bouton principal rouge et augmente légèrement le titre..."></textarea>
+    <div class="ai-admin-actions">
+      <button id="ai-admin-send" class="ai-admin-send" type="button">Envoyer à l'IA <span aria-hidden="true">↗</span></button>
+      <button id="ai-admin-undo" class="ai-admin-undo" type="button" disabled>Annuler la dernière modification</button>
+    </div>
+    <p id="ai-admin-status" class="ai-admin-status" role="status" aria-live="polite">Prêt. Décris ce que tu veux changer.</p>
+    <div id="ai-admin-result" class="ai-admin-result" hidden>
+      <p id="ai-admin-reply" class="ai-admin-reply"></p>
+      <div id="ai-admin-proposals" class="ai-admin-proposals"></div>
+      <button id="ai-admin-apply" class="ai-admin-apply" type="button" hidden>Appliquer les changements</button>
+    </div>
+    <p class="ai-admin-footnote">Les changements appliqués sont temporaires dans cette page. Pour les conserver, exporte ou modifie les fichiers du site puis republie-les sur GitHub.</p>
+  </section>
+</div>
+<script src="admin-config.js"></script>
+<script src="script.js" defer></script>
+<script defer src="admin-editor.js"></script>
+</body>
+</html>

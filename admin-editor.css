@@ -1,0 +1,38 @@
+/* Assistant IA administrateur — styles isolés pour préserver l'identité du portfolio. */
+.ai-admin-root,.ai-admin-root *{box-sizing:border-box}
+.ai-admin-root{position:fixed;right:1.25rem;bottom:1.25rem;z-index:9999;font-family:var(--font,"Figtree",system-ui,sans-serif);color:var(--text,#17191f)}
+.ai-admin-toggle{display:flex;align-items:center;gap:.65rem;border:2px solid var(--hard,#17191f);border-radius:999px;padding:.85rem 1.15rem;background:var(--accent,#f5a623);color:#17191f;font:700 .95rem var(--display,"Bricolage Grotesque",system-ui,sans-serif);box-shadow:4px 4px 0 var(--hard,#17191f);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.ai-admin-toggle:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--hard,#17191f)}
+.ai-admin-spark{font-size:1.25rem}
+.ai-admin-panel{position:absolute;right:0;bottom:4.3rem;width:min(420px,calc(100vw - 2rem));max-height:min(78vh,720px);overflow:auto;padding:1.1rem;border:2px solid var(--hard,#17191f);border-radius:18px;background:var(--surface,#fff);box-shadow:8px 8px 0 var(--hard,#17191f)}
+.ai-admin-panel[hidden],.ai-admin-result[hidden],.ai-admin-apply[hidden]{display:none}
+.ai-admin-header{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;margin-bottom:1rem}
+.ai-admin-header h2{margin:.1rem 0 .2rem;font:800 1.25rem var(--display,"Bricolage Grotesque",system-ui,sans-serif);color:var(--text,#17191f)}
+.ai-admin-eyebrow{margin:0;color:var(--accent-text,#8b5a00);font-size:.68rem;font-weight:800;letter-spacing:.12em}
+.ai-admin-subtitle{margin:0;color:var(--muted,#656b76);font-size:.85rem}
+.ai-admin-close{width:2rem;height:2rem;border:1px solid var(--line,#d7dbe2);border-radius:50%;background:transparent;color:var(--text,#17191f);font-size:1.4rem;line-height:1;cursor:pointer}
+.ai-admin-security{display:grid;gap:.15rem;margin:0 0 .9rem;padding:.7rem .8rem;border:1px solid var(--line,#d7dbe2);border-radius:10px;background:var(--surface-2,#f4f5f7);font-size:.78rem;color:var(--muted,#656b76)}
+.ai-admin-security strong{color:var(--text,#17191f)}
+.ai-admin-label{display:block;margin:.75rem 0 .35rem;font-size:.8rem;font-weight:700;color:var(--text,#17191f)}
+.ai-admin-input{display:block;width:100%;border:1.5px solid var(--line,#d7dbe2);border-radius:10px;padding:.7rem .8rem;background:var(--bg,#fff);color:var(--text,#17191f);font:inherit;font-size:.9rem}
+.ai-admin-input:focus{outline:3px solid color-mix(in srgb,var(--accent,#f5a623) 35%,transparent);border-color:var(--hard,#17191f)}
+.ai-admin-message{resize:vertical;min-height:5.5rem}
+.ai-admin-actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.8rem}
+.ai-admin-send,.ai-admin-apply{border:1.5px solid var(--hard,#17191f);border-radius:9px;padding:.65rem .9rem;background:var(--hard,#17191f);color:#fff;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer}
+.ai-admin-send:disabled{opacity:.55;cursor:wait}
+.ai-admin-undo{border:1px solid var(--line,#d7dbe2);border-radius:9px;padding:.65rem .75rem;background:transparent;color:var(--muted,#656b76);font:600 .78rem inherit;cursor:pointer}
+.ai-admin-undo:disabled{opacity:.4;cursor:not-allowed}
+.ai-admin-status{min-height:1.3rem;margin:.7rem 0 0;color:var(--muted,#656b76);font-size:.78rem}
+.ai-admin-result{margin-top:.6rem;padding:.8rem;border-radius:10px;background:var(--surface-2,#f4f5f7)}
+.ai-admin-reply{margin:0 0 .65rem;font-size:.88rem;line-height:1.5;white-space:pre-wrap}
+.ai-admin-proposals{display:grid;gap:.4rem;margin-bottom:.7rem}
+.ai-admin-proposal{padding:.55rem .65rem;border:1px solid var(--line,#d7dbe2);border-radius:8px;background:var(--surface,#fff);font-size:.78rem;overflow-wrap:anywhere}
+.ai-added-section{margin-top:2.5rem;margin-bottom:2.5rem;padding-top:1.5rem;padding-bottom:1.5rem;border:1.5px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.ai-added-section h2{font-family:var(--display);margin:0 0 .8rem}
+.ai-admin-footnote{margin:.8rem 0 0;color:var(--faint,#858b96);font-size:.7rem;line-height:1.45}
+@media(max-width:520px){.ai-admin-root{right:.8rem;bottom:.8rem}.ai-admin-panel{bottom:4rem;right:-.15rem;max-height:76vh;padding:.9rem}.ai-admin-toggle{padding:.75rem 1rem}}
+@media(prefers-reduced-motion:reduce){.ai-admin-toggle{transition:none}}
+
+.ai-admin-debug{margin-top:.65rem;border:1px solid var(--line,#d7dbe2);border-radius:8px;background:var(--surface-2,#f4f5f7);font-size:.76rem}
+.ai-admin-debug summary{padding:.55rem .7rem;cursor:pointer;font-weight:700}
+.ai-admin-debug pre{max-height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:.65rem;border-top:1px solid var(--line,#d7dbe2);font: .72rem/1.45 ui-monospace,SFMono-Regular,Consolas,monospace}

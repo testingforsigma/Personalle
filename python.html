@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python — Rayen Zarrouk</title>
+  <meta name="description" content="Trois mini-projets : calculatrice, jeu de devinettes, gestionnaire de notes." />
+  <meta name="author" content="Rayen Zarrouk" />
+  <meta name="theme-color" content="#edeff3" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
+  <meta property="og:title" content="Python — Rayen Zarrouk" />
+  <meta property="og:description" content="Trois mini-projets : calculatrice, jeu de devinettes, gestionnaire de notes." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&family=Figtree:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin-editor.css" />
+  <script>
+    /* Applique le thème avant le premier affichage (évite le flash blanc) */
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add("js");
+      try { t = localStorage.getItem("portfolio-theme"); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      d.setAttribute("data-theme", t);
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="brand" aria-label="Rayen Zarrouk — accueil">
+        <img class="brand-mark" src="avatar.jpg" alt="" width="38" height="38" />
+        <span class="brand-name">Rayen Zarrouk</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="has-dd">
+            <button class="nav-link dd-btn" type="button" aria-expanded="false" aria-controls="dd-ds">Digital Skills <svg class="icon chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="dd-panel" id="dd-ds">
+              <li><a class="g-ds" href="cybersecurite.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Cybersécurité<small>Menaces, bonnes pratiques, checklist</small></span></a></li>
+              <li><a class="g-ds" href="prompt-engineering.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><span>Prompt Engineering<small>Cas pratiques et prompts réutilisables</small></span></a></li>
+              <li><a class="g-ds" href="creation-contenu.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m10 9 5 3-5 3z"/></svg></span><span>Création de contenu<small>Vidéo, podcast, carte mentale</small></span></a></li>
+            </ul>
+          </li>
+          <li class="has-dd">
+            <button class="nav-link dd-btn active" type="button" aria-expanded="false" aria-controls="dd-dev">Développement <svg class="icon chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="dd-panel" id="dd-dev">
+              <li><a class="g-dev" href="python.html" aria-current="page"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></span><span>Python<small>Calculatrice, devinettes, notes</small></span></a></li>
+              <li><a class="g-dev" href="langage-c.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><span>Langage C<small>Variables, boucles, pointeurs</small></span></a></li>
+              <li><a class="g-dev" href="algorithmique.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/></svg></span><span>Algorithmique<small>Organigrammes et pseudo-code</small></span></a></li>
+            </ul>
+          </li>
+          <li class="has-dd">
+            <button class="nav-link dd-btn" type="button" aria-expanded="false" aria-controls="dd-sys">Systèmes <svg class="icon chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="dd-panel" id="dd-sys">
+              <li><a class="g-sys" href="systemes-exploitation.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span>Systèmes d'exploitation<small>Windows, Linux, macOS, terminal</small></span></a></li>
+              <li><a class="g-sys" href="architecture-electronique.html"><span class="tile sm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg></span><span>Architecture &amp; électronique<small>Binaire, hexadécimal, portes logiques</small></span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Passer en mode sombre" aria-pressed="false">
+          <svg class="icon i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="icon i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button id="menu-toggle" class="icon-btn menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+          <svg class="icon i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="icon i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header g-dev" id="top">
+    <div class="inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="index.html">Accueil</a></li>
+          <li>Développement</li>
+          <li aria-current="page">Python</li>
+        </ol>
+      </nav>
+      <span class="tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></span>
+      <p class="kicker">Développement · Module 4/8</p>
+      <h1>Python</h1>
+      <p class="page-lede">Trois mini-projets : calculatrice, jeu de devinettes, gestionnaire de notes.</p>
+    </div>
+  </div>
+
+  <main id="contenu" class="page g-dev">
+<section class="block"><h2>Mini-projet 1 — Calculatrice</h2><p><strong>Description :</strong> La fonction calculer applique l’opération demandée. Les conditions choisissent l’opération ; les exceptions empêchent une division par zéro et signalent une saisie incorrecte.</p><pre><code class="language-python">def calculer(a, operateur, b):
+    if operateur == &quot;+&quot;: return a + b
+    if operateur == &quot;-&quot;: return a - b
+    if operateur == &quot;*&quot;: return a * b
+    if operateur == &quot;/&quot;:
+        if b == 0: raise ZeroDivisionError(&quot;division par zéro&quot;)
+        return a / b
+    raise ValueError(&quot;opérateur inconnu&quot;)
+
+try:
+    a = float(input(&quot;Premier nombre : &quot;))
+    op = input(&quot;Opération (+, -, *, /) : &quot;)
+    b = float(input(&quot;Deuxième nombre : &quot;))
+    print(&quot;Résultat :&quot;, calculer(a, op, b))
+except ValueError as erreur:
+    print(&quot;Erreur :&quot;, erreur)
+except ZeroDivisionError as erreur:
+    print(&quot;Erreur :&quot;, erreur)
+</code></pre><h3>Explication</h3><p>La fonction calculer applique l’opération demandée. Les conditions choisissent l’opération ; les exceptions empêchent une division par zéro et signalent une saisie incorrecte.</p><h3>Capture d’exécution</h3><figure><img src="calc-capture.png" alt="Capture de terminal montrant le test du programme Mini-projet 1 — Calculatrice" loading="lazy"><figcaption>Exécution de démonstration reproduite à partir du code fourni.</figcaption></figure><h3>Difficultés et solutions</h3><p>J’ai vérifié une addition (17 + 25), une division par zéro et un opérateur inconnu.</p></section>
+<section class="block"><h2>Mini-projet 2 — Jeu de devinettes</h2><p><strong>Description :</strong> random.randint choisit un entier entre 1 et 100. La boucle while continue tant que la réponse est fausse ; les comparaisons indiquent si la proposition est trop petite ou trop grande.</p><pre><code class="language-python">import random
+
+secret = random.randint(1, 100)
+essais = 0
+print(&quot;Devinez le nombre entre 1 et 100.&quot;)
+while True:
+    try:
+        proposition = int(input(&quot;Votre proposition : &quot;))
+        essais += 1
+        if proposition &lt; secret:
+            print(&quot;Trop petit !&quot;)
+        elif proposition &gt; secret:
+            print(&quot;Trop grand !&quot;)
+        else:
+            print(f&quot;Bravo ! Trouvé en {essais} essai(s).&quot;)
+            break
+    except ValueError:
+        print(&quot;Entrez un nombre entier.&quot;)
+</code></pre><h3>Explication</h3><p>random.randint choisit un entier entre 1 et 100. La boucle while continue tant que la réponse est fausse ; les comparaisons indiquent si la proposition est trop petite ou trop grande.</p><h3>Capture d’exécution</h3><figure><img src="dev-capture.png" alt="Capture de terminal montrant le test du programme Mini-projet 2 — Jeu de devinettes" loading="lazy"><figcaption>Exécution de démonstration reproduite à partir du code fourni.</figcaption></figure><h3>Difficultés et solutions</h3><p>Le test de démonstration utilise une graine aléatoire fixée pour reproduire le nombre 50 ; le jeu normal choisit un nombre différent à chaque lancement.</p></section>
+<section class="block"><h2>Mini-projet 3 — Gestionnaire de notes</h2><p><strong>Description :</strong> Le dictionnaire associe chaque matière à sa note. La fonction analyser_notes calcule la moyenne et repère les clés associées aux notes minimale et maximale.</p><pre><code class="language-python">def analyser_notes(notes):
+    moyenne = sum(notes.values()) / len(notes)
+    meilleure = max(notes, key=notes.get)
+    moins_bonne = min(notes, key=notes.get)
+    return moyenne, meilleure, moins_bonne
+
+notes = {}
+nombre = int(input(&quot;Nombre de matières : &quot;))
+for i in range(nombre):
+    matiere = input(f&quot;Matière {i + 1} : &quot;)
+    note = float(input(f&quot;Note de {matiere} (/20) : &quot;))
+    if not 0 &lt;= note &lt;= 20:
+        print(&quot;Note invalide : saisissez une valeur entre 0 et 20.&quot;)
+        continue
+    notes[matiere] = note
+
+if notes:
+    moyenne, meilleure, moins_bonne = analyser_notes(notes)
+    print(f&quot;Moyenne : {moyenne:.2f}/20&quot;)
+    print(f&quot;Meilleure note : {meilleure} ({notes[meilleure]}/20)&quot;)
+    print(f&quot;Note la plus faible : {moins_bonne} ({notes[moins_bonne]}/20)&quot;)
+else:
+    print(&quot;Aucune note valide.&quot;)
+</code></pre><h3>Explication</h3><p>Le dictionnaire associe chaque matière à sa note. La fonction analyser_notes calcule la moyenne et repère les clés associées aux notes minimale et maximale.</p><h3>Capture d’exécution</h3><figure><img src="notes-capture.png" alt="Capture de terminal montrant le test du programme Mini-projet 3 — Gestionnaire de notes" loading="lazy"><figcaption>Exécution de démonstration reproduite à partir du code fourni.</figcaption></figure><h3>Difficultés et solutions</h3><p>J’ai testé deux matières avec les notes 16 et 18. Une saisie hors de l’intervalle 0–20 est refusée.</p></section>
+<section class="block"><h2>Option — reproduire les démonstrations dans Termux</h2>
+<p>Les images déjà présentes sont des démonstrations clairement identifiées. Il n’est pas nécessaire de les remplacer. Si une consigne pédagogique exige des preuves personnelles, les commandes suivantes permettent de reproduire les programmes dans Termux :</p>
+<pre><code>pkg update
+pkg install python clang
+cd ~/portfolio-numerique
+python3 calculatrice.py
+python3 devinettes.py
+python3 gestionnaire_notes.py</code></pre>
+<p>Exemples de saisie : 17, +, 25 pour la calculatrice ; deux matières avec 16 et 18 pour le gestionnaire de notes. Pour le jeu, proposer des nombres jusqu’à trouver la valeur secrète. Une capture personnelle n’est utile que si elle est explicitement demandée.</p>
+<p>Pour lancer tous les tests de démonstration d’un coup : <code>bash run_portfolio_tests.sh</code>. Conserver les visuels de démonstration s’il n’est pas demandé de fournir des preuves personnelles.</p></section>
+<section class="ia-disclosure"><h2>🧾 Fiche de transparence IA</h2><dl>
+<dt>Outils utilisés :</dt><dd>ChatGPT (aide à la rédaction, à la révision et à la mise au point des exemples).</dd>
+<dt>Rôle de l'IA :</dt><dd>L’IA a proposé une première version des trois programmes et des explications. Les fichiers sources et les captures de démonstration sont fournis dans le dossier à la racine du projet.</dd>
+<dt>Validation et travail personnel :</dt><dd>L’étudiant doit relire et comprendre chaque élément, vérifier les informations avec les sources citées et exécuter lui-même les programmes ou manipulations avant la remise. Les exemples et sorties signalés comme démonstrations ne sont pas des preuves personnelles. Les choix finaux, la validation et la présentation doivent être assumés par l’étudiant.</dd>
+<dt>Sources vérifiées :</dt><dd><a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener">Documentation officielle Python — tutoriel</a> ; <a href="https://docs.python.org/3/library/random.html" target="_blank" rel="noopener">module random</a> ; <a href="https://docs.python.org/3/library/exceptions.html" target="_blank" rel="noopener">exceptions Python</a>.</dd></dl></section>
+</main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="brand"><img class="brand-mark" src="avatar.jpg" alt="" width="38" height="38" /><span>Rayen Zarrouk</span></a>
+        <p>Portfolio numérique — étudiant en Technologies de l'Informatique (TI14) à l'ISET Nabeul.</p>
+      </div>
+      <div>
+        <h2>Digital Skills</h2>
+        <ul>
+          <li><a href="cybersecurite.html">Cybersécurité</a></li>
+          <li><a href="prompt-engineering.html">Prompt Engineering</a></li>
+          <li><a href="creation-contenu.html">Création de contenu</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Développement</h2>
+        <ul>
+          <li><a href="python.html">Python</a></li>
+          <li><a href="langage-c.html">Langage C</a></li>
+          <li><a href="algorithmique.html">Algorithmique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Systèmes</h2>
+        <ul>
+          <li><a href="systemes-exploitation.html">Systèmes d'exploitation</a></li>
+          <li><a href="architecture-electronique.html">Architecture &amp; électronique</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Rayen Zarrouk — Portfolio Numérique — Hébergé sur GitHub Pages</p>
+      <a href="#top">Haut de page ↑</a>
+    </div>
+  </footer>
+
+  <!-- Assistant IA administrateur : appel direct au fournisseur depuis le navigateur. -->
+<div id="ai-admin-root" class="ai-admin-root">
+  <button id="ai-admin-toggle" class="ai-admin-toggle" type="button" aria-expanded="false" aria-controls="ai-admin-panel">
+    <span class="ai-admin-spark" aria-hidden="true">✦</span><span>Assistant IA</span>
+  </button>
+  <section id="ai-admin-panel" class="ai-admin-panel" aria-label="Assistant administrateur du portfolio" hidden>
+    <header class="ai-admin-header">
+      <div><p class="ai-admin-eyebrow">ESPACE ADMINISTRATEUR</p><h2>Assistant du portfolio</h2><p class="ai-admin-subtitle">Décris une modification en langage naturel.</p></div>
+      <button id="ai-admin-close" class="ai-admin-close" type="button" aria-label="Fermer">×</button>
+    </header>
+    <div class="ai-admin-security"><strong>Mode direct</strong><span>Écris ta demande et envoie-la directement au service IA. Les changements sont prévisualisés avant application.</span></div>
+    <label class="ai-admin-label" for="ai-admin-message">Que veux-tu modifier ?</label>
+    <textarea id="ai-admin-message" class="ai-admin-input ai-admin-message" rows="3" maxlength="2000" placeholder="Ex. : rends le bouton principal rouge et augmente légèrement le titre..."></textarea>
+    <div class="ai-admin-actions">
+      <button id="ai-admin-send" class="ai-admin-send" type="button">Envoyer à l'IA <span aria-hidden="true">↗</span></button>
+      <button id="ai-admin-undo" class="ai-admin-undo" type="button" disabled>Annuler la dernière modification</button>
+    </div>
+    <p id="ai-admin-status" class="ai-admin-status" role="status" aria-live="polite">Prêt. Décris ce que tu veux changer.</p>
+    <div id="ai-admin-result" class="ai-admin-result" hidden>
+      <p id="ai-admin-reply" class="ai-admin-reply"></p>
+      <div id="ai-admin-proposals" class="ai-admin-proposals"></div>
+      <button id="ai-admin-apply" class="ai-admin-apply" type="button" hidden>Appliquer les changements</button>
+    </div>
+    <p class="ai-admin-footnote">Les changements appliqués sont temporaires dans cette page. Pour les conserver, exporte ou modifie les fichiers du site puis republie-les sur GitHub.</p>
+  </section>
+</div>
+<script src="admin-config.js"></script>
+<script src="script.js" defer></script>
+<script defer src="admin-editor.js"></script>
+</body>
+</html>
